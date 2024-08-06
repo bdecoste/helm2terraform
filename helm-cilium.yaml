@@ -1,0 +1,71 @@
+# Cilium chart inputs
+hubble-ui:
+  enabled: true
+  relay:
+    address: 'hubble-relay.cilium.svc.cluster.local'
+  frontend:
+    server:
+      ipv6:
+        enabled: false
+cilium:
+  keepDeprecatedProbes: true
+  kubeProxyReplacement: false
+  aksbyocni:
+    enabled: true
+  cni:
+    customConf: false
+    chainingMode: none
+  cluster:
+    name: decoste-panda
+  debug:
+    enabled: true
+  envoy:
+    enabled: true
+    extraArgs:
+    - "--component-log-level http:debug,http2:debug,filter:debug,conn_handler:debug,router:debug,connection:debug,upstream:debug,pool:debug"
+    prometheus:
+      enabled: true
+#  gatewayAPI:
+#    enabled: true
+  ipam:
+    operator:
+      clusterPoolIPv4PodCIDRList: 192.168.0.0/16
+#  k8sServiceHost: decoste-pa-decoste-panda-8dbd25-f9qfu05h.hcp.eastus.azmk8s.io 
+  k8sServiceHost: 10.0.0.1
+  k8sServicePort: 443
+  localRedirectPolicy: true
+  hubble:
+    enabled: true
+    listenAddress: ":4244"
+    metrics:
+      enableOpenMetrics: true    
+      enabled:
+        - dns:query;sourceContext=workload-name;destinationContext=workload-name
+        - drop:sourceContext=identity;destinationContext=identity;labelsContext=source_workload,destination_workload
+        - tcp
+        - flow
+        - port-distribution
+        - http
+        - flows-to-world
+        - policy
+    relay:
+      enabled: true
+      retryTimeout: 15s
+      dialTimeout: 15s
+      prometheus:
+      enabled: true
+    ui:
+      enabled: false
+  masquerade: false
+  nodePort:
+    enabled: true
+    enableHealthCheckLoadBalancerIP: true
+  operator:
+    enabled: true
+    prometheus:
+      enabled: true
+  prometheus:
+    enabled: true
+  # reduce load on kube-apiserver
+  enableK8sEndpointSlice: true
+  enableCiliumEndpointSlice: true

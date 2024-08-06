@@ -1,0 +1,1888 @@
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-agent/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: "cilium"
+  namespace: cilium
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-operator/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: "cilium-operator"
+  namespace: cilium
+---
+# Source: cilium-enterprise/charts/cilium/templates/hubble-relay/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: "hubble-relay"
+  namespace: cilium
+---
+# Source: cilium-enterprise/charts/hubble-ui/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: "hubble-ui"
+  namespace: cilium
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-ca-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cilium-ca
+  namespace: cilium
+data:
+  ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURFekNDQWZ1Z0F3SUJBZ0lRVnRnWTA4Lyt3amMra29ZMUxrTDZ6REFOQmdrcWhraUc5dzBCQVFzRkFEQVUKTVJJd0VBWURWUVFERXdsRGFXeHBkVzBnUTBFd0hoY05NalF3TmpFME1UVXdOekV5V2hjTk1qY3dOakUwTVRVdwpOekV5V2pBVU1SSXdFQVlEVlFRREV3bERhV3hwZFcwZ1EwRXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCCkR3QXdnZ0VLQW9JQkFRREtaNFZONGVqRWNGR0ppTmhFZ3U3azl5VmlMK2NKYVphUTlKcVV5VGZlRStXZjVQVDYKSU5sVDllTWwwV0FrY3NUczYvb3I4QkhJV3FlUUJGdGZ0TVpkcnE4Y1hPMFJwNHNKZkttZFNiVTAvaXRGdG1yWQpTVVB5OVVCeHVrOTExNVBSN1NKNDYwWEV0SUJyYTFpQ0ozRTVvalhPaENuNHdrdnA2Y0Z3a2FPcXh4NjZuL0F4Ck9WVWt0RS80VTNROEJiWGRsRzhwNStnZ1lGYktXNHhwNmE5MlJ3VTlaeDJoY09BQWxKK081cnVRUEl2U0VPb3cKT3E1YlRjaXZhOHRHdnN1VE5TYkJDb01zSzI0RzF2YXRhdnlTam14alVpb3lEUzFvSG9wczNsRVRMcFcxWmt3cApJWXJWRGhhZ3RiSDUzcUQrL0JjSHl5VyszWG0rM0ZCZTVMVEZBZ01CQUFHallUQmZNQTRHQTFVZER3RUIvd1FFCkF3SUNwREFkQmdOVkhTVUVGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0R3WURWUjBUQVFIL0JBVXcKQXdFQi96QWRCZ05WSFE0RUZnUVVwdGFjRkUxNUEyVkNQMnBpUkpjckxUenFyS1V3RFFZSktvWklodmNOQVFFTApCUUFEZ2dFQkFHWFBPWE9VNjNqOWtqU0hpVlQrd3hOanNUS3RNNS9jL0l3Rk5jY3BwZk1vVHNwSklsZU5HaHF2CmlnSFdyK2ltcStDTGIyTkMveVEvWVczSG13ZnEycER5YnZkYzA3SVR6aDc2dGlhMy9Ub29reUg2RDZTTklpRUwKc1RWNk1HclNrOUFxejRSTGJrVjNvQkx2dStRN0hTcnRVbS9QOURGRml3bmNmaXdLMGgzT2dTRFhVZVBWclVDQwpPU0dNbE0wWVB3eG0vOU1mOUFGMVVqMTRXUTVNb0IxUG5OcHZIbHpLUUVtOFNSL0k5NW1GYlNoVEYrbDh2ZVhKCmMxdk4ybXdJTm93QTNtUUJFeW14UlNWLzlHMG1YYmFraVo3WW4vVHFrd3NzdmVsWTlMSzh6WHFKZnNYRUFaNTMKYWZoL0t4ai9XZjRRRXM1VkJkNlJPbkcyWE9acWhTQT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  ca.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBeW1lRlRlSG94SEJSaVlqWVJJTHU1UGNsWWkvbkNXbVdrUFNhbE1rMzNoUGxuK1QwCitpRFpVL1hqSmRGZ0pITEU3T3Y2Sy9BUnlGcW5rQVJiWDdUR1hhNnZIRnp0RWFlTENYeXBuVW0xTlA0clJiWnEKMkVsRDh2VkFjYnBQZGRlVDBlMGllT3RGeExTQWEydFlnaWR4T2FJMXpvUXArTUpMNmVuQmNKR2pxc2NldXAvdwpNVGxWSkxSUCtGTjBQQVcxM1pSdktlZm9JR0JXeWx1TWFlbXZka2NGUFdjZG9YRGdBSlNmanVhN2tEeUwwaERxCk1EcXVXMDNJcjJ2TFJyN0xrelVtd1FxRExDdHVCdGIycldyOGtvNXNZMUlxTWcwdGFCNktiTjVSRXk2VnRXWk0KS1NHSzFRNFdvTFd4K2Q2Zy92d1hCOHNsdnQxNXZ0eFFYdVMweFFJREFRQUJBb0lCQUd0UE96T3hoREV4dzJrQgpybmVVVzRmMUtGTElSdHVNcVpFc3ZoQUlKcUNOTi83djZwbjZkSDY1TExiT0xRVGwvRllJUGxpeExSeG1ROVJ0Ckd1ekE4VEtWL0sweTcxV2UyRzR0TTlmNlRpSk1aekRNcUJVSHN3akswbUg1ZjB0aEFqUVlYMkJ3akVyZnovNGoKcVlkSDFoWFNWR2lyVlgxWHRkdk1YUXlMaXBSdGpyWXBrV0NObHIxNXJPcFIybjY3ZFE2eDd2MVNaeWFtejM1Lwo0ZkxoRUhTOWk1Ykt5WVZ6L3JDSVQvY0lPUmswYVg2Zk9sQTJoY3hYcDV6enNVWW5jQitzczFyYjBqeFB3MmV5CmhpeENsaGRHS2tvV29nOFNhY3pHTS81ekxXdDVqVFd1ZzNKMTZWUDgyQWVneURIbEdXdzNXdzB4ZmRzVTQxRmsKYnRzRmxRRUNnWUVBektlYXV3Z2tDczBiR2EyY3E2Tmh0NE4reGF5OXZ3VmtrMndqRGUzOWt4bFVKald6M1Z0KwoyZlhEVG5HTHYvVXhjQmZMeVV6MXhrV3V2S0QwTDloQlYrcGd1N0NsSkNmVm5GOGw5c2daK0FvZ0hGdlcvdFVuCk5Wc3VIT3NSYkdySTNHbTViWkhDWjNlU2hEVXNWZnZpQXBSZEtwM1VkNHdtbU53T1BQTnpnaUVDZ1lFQS9TOWkKVnVkbVh0RVRNSk1URFNRNi9XaGU2aU9iVTJjOWNERHhhK0hhNTVUNUhkd2NHMHpRMHMyUnlkVXh1UEpIL1lNZgoyd0JaMUxjelBoQjU4c3l3WEdZT25hdEZzazBSMkowNnpwbUdzbE1XSTNlWXlXTi9FSUN6aVBSWWVBbWRkcFF3CjFSZ3Q4QllhUmZRN1haZmp3QlBTcWs1dkJJTzF3WEExY1pHaUppVUNnWUJ1NHAwR201bVR0Si9yWU5MVGVKbTQKYWVubFJ2d2tKTkxpd2FPWXA0dE9DVm83dmJzdnc2Uk9pa2VCR0NxRkhsL2tBVENzYUNOK2cwRHkrUzUxUWZIZApwYU0xN3JiN2lRM0hSUkozek9HdE1DZEgxa2IrR2hXOVppTHREanlKaHE1QUpwU09sbnhEdlZqSWcxcjdWNWVVCm1EaUduNjkvK3BMckhjZ2xKQzlBb1FLQmdRREdpU1NsSHZtQWVwU0FyNlB0MXk1R3psUTNhRXFCd1dCRkhLd0QKdSt6TFVsOXkwY3BjZ2dUeWVPN01oVmhqUGVIRDR0SFZDdFptWG01WlNkUkcxOG1uK3dPVkVkd3FjQk1CZUhISAoxazN3Z2dUSE5SNWpOWmxMR0pFd1lPTUs1Z2RMRi9PZTlrSDNsVzF1MDVERjJMaG9RMk1iMXp0cEg5c2ozOWlZCndPbVUzUUtCZ0ZiemIzWldGTjVrTmYreUx6SnVsMzgrRzQ4RGswNFNxaEp1eWRxU3gyNmVUeU5QTUFRWXlGZlIKVkVkbVJSUDFjSnM3M0VTZmJDbGp6dVRGODFNSzRjYjVKTDJlWGwxd0EyZ0FtWDRwTm1lZ1dQR0l6M25nYjNQeQptNGFhbmZaZGp4WWdlZlBuZEpTYW94dldSZ0QvZ3VMU0tQbXdEd2gxaHpuRFZyemMvT3pOCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
+---
+# Source: cilium-enterprise/charts/cilium/templates/hubble/tls-helm/relay-client-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hubble-relay-client-certs
+  namespace: cilium
+type: kubernetes.io/tls
+data:
+  ca.crt:  LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURFekNDQWZ1Z0F3SUJBZ0lRVnRnWTA4Lyt3amMra29ZMUxrTDZ6REFOQmdrcWhraUc5dzBCQVFzRkFEQVUKTVJJd0VBWURWUVFERXdsRGFXeHBkVzBnUTBFd0hoY05NalF3TmpFME1UVXdOekV5V2hjTk1qY3dOakUwTVRVdwpOekV5V2pBVU1SSXdFQVlEVlFRREV3bERhV3hwZFcwZ1EwRXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCCkR3QXdnZ0VLQW9JQkFRREtaNFZONGVqRWNGR0ppTmhFZ3U3azl5VmlMK2NKYVphUTlKcVV5VGZlRStXZjVQVDYKSU5sVDllTWwwV0FrY3NUczYvb3I4QkhJV3FlUUJGdGZ0TVpkcnE4Y1hPMFJwNHNKZkttZFNiVTAvaXRGdG1yWQpTVVB5OVVCeHVrOTExNVBSN1NKNDYwWEV0SUJyYTFpQ0ozRTVvalhPaENuNHdrdnA2Y0Z3a2FPcXh4NjZuL0F4Ck9WVWt0RS80VTNROEJiWGRsRzhwNStnZ1lGYktXNHhwNmE5MlJ3VTlaeDJoY09BQWxKK081cnVRUEl2U0VPb3cKT3E1YlRjaXZhOHRHdnN1VE5TYkJDb01zSzI0RzF2YXRhdnlTam14alVpb3lEUzFvSG9wczNsRVRMcFcxWmt3cApJWXJWRGhhZ3RiSDUzcUQrL0JjSHl5VyszWG0rM0ZCZTVMVEZBZ01CQUFHallUQmZNQTRHQTFVZER3RUIvd1FFCkF3SUNwREFkQmdOVkhTVUVGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0R3WURWUjBUQVFIL0JBVXcKQXdFQi96QWRCZ05WSFE0RUZnUVVwdGFjRkUxNUEyVkNQMnBpUkpjckxUenFyS1V3RFFZSktvWklodmNOQVFFTApCUUFEZ2dFQkFHWFBPWE9VNjNqOWtqU0hpVlQrd3hOanNUS3RNNS9jL0l3Rk5jY3BwZk1vVHNwSklsZU5HaHF2CmlnSFdyK2ltcStDTGIyTkMveVEvWVczSG13ZnEycER5YnZkYzA3SVR6aDc2dGlhMy9Ub29reUg2RDZTTklpRUwKc1RWNk1HclNrOUFxejRSTGJrVjNvQkx2dStRN0hTcnRVbS9QOURGRml3bmNmaXdLMGgzT2dTRFhVZVBWclVDQwpPU0dNbE0wWVB3eG0vOU1mOUFGMVVqMTRXUTVNb0IxUG5OcHZIbHpLUUVtOFNSL0k5NW1GYlNoVEYrbDh2ZVhKCmMxdk4ybXdJTm93QTNtUUJFeW14UlNWLzlHMG1YYmFraVo3WW4vVHFrd3NzdmVsWTlMSzh6WHFKZnNYRUFaNTMKYWZoL0t4ai9XZjRRRXM1VkJkNlJPbkcyWE9acWhTQT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURTRENDQWpDZ0F3SUJBZ0lRV0FOMExOSEtVYTNnQlRqT3Y1T05nREFOQmdrcWhraUc5dzBCQVFzRkFEQVUKTVJJd0VBWURWUVFERXdsRGFXeHBkVzBnUTBFd0hoY05NalF3TmpFME1UVXdOekV6V2hjTk1qY3dOakUwTVRVdwpOekV6V2pBak1TRXdId1lEVlFRRERCZ3FMbWgxWW1Kc1pTMXlaV3hoZVM1amFXeHBkVzB1YVc4d2dnRWlNQTBHCkNTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDaWhBY1MxZXBwUTQ4VktqSW91QUlYZjRMT0ZERU8KS29SSjBxbVBEWXpUUkdITmt6dmRxU2VpUWJpNGpOV2RHVFh1T0tya2ZYL2t6NkRQZkRVb1p4TTVqQnU3V0xHcApnZEZxZ2FraWlwcldXN1lZU2tsZ1F5M3hiYllRMFozWUd2Snc4MHE3cDVSVmRIWjVId2hEQnlBSmYxT1FwTHd4CjZkTUlPcU5kWSsxUlN0QXByM2V2dnZHUThrcUttK0R5RllrNmJoYWhVU0liNGtYWnNHYkpJSHZ2aHlhUHpHSXgKc3NWM29Zc1E3aU5xVlZxQS9Eb1F6R1J6TFlKMW5sZ2RRcmlpVU9qdVQ5eFh6VmZEOEZlZVoyVjFKaCtOYnVZcgpRMTFjb1dlNHZyMStjbnhKZVN4VXhVOE5ENFBUOVZENXBuVEhLVFNwZ21OSmxDak8yVEozVmNWTkFnTUJBQUdqCmdZWXdnWU13RGdZRFZSMFBBUUgvQkFRREFnV2dNQjBHQTFVZEpRUVdNQlFHQ0NzR0FRVUZCd01CQmdnckJnRUYKQlFjREFqQU1CZ05WSFJNQkFmOEVBakFBTUI4R0ExVWRJd1FZTUJhQUZLYlduQlJOZVFObFFqOXFZa1NYS3kwOAo2cXlsTUNNR0ExVWRFUVFjTUJxQ0dDb3VhSFZpWW14bExYSmxiR0Y1TG1OcGJHbDFiUzVwYnpBTkJna3Foa2lHCjl3MEJBUXNGQUFPQ0FRRUF1a2N2N1kzU3VvenlpVm9TYnhnckhrQkxNQTB0MWIvQlpmUDkvcWFjenlyNEtPMW0KWnY0OXJZQWF1TUpnUGVVTXpLMHdoZWJVaVY0SmVDZDg4azB5WWhHd0xUT2k2Nkhtc0RmSGJlN1RPL0tCQ09SVQpBRlZ5LzlCV1c3eStvOGZZNjZQeGFRUkFvdGg1ajJYTTNpbzhYT3FIT3pXcXNJUnFubHVncU55YldhWDBjQ0NZCnNpdWdNUjl6TkVXakJ0UlpPc1RIbkF3MjhtNU5CeTh0QXRvV2RtWkR5NTgvRElXcjJMZHdGYkRZSzVLa28rb3MKSDZtdGpnSloxVzRMYXE1QS92WGYvREUzUkFVSjJacmFBUmV0a055VXlEZ3FvbHpBTUx4d0VBMWZ4Z28rbXBhVwpZVk1EMEJOZXdnVUxNbkpMaFl3eFp6eFdZczM3QU13NENYYnVZUT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBb29RSEV0WHFhVU9QRlNveUtMZ0NGMytDemhReERpcUVTZEtwancyTTAwUmh6Wk03CjNha25va0c0dUl6Vm5SazE3amlxNUgxLzVNK2d6M3cxS0djVE9Zd2J1MWl4cVlIUmFvR3BJb3FhMWx1MkdFcEoKWUVNdDhXMjJFTkdkMkJyeWNQTkt1NmVVVlhSMmVSOElRd2NnQ1g5VGtLUzhNZW5UQ0RxalhXUHRVVXJRS2E5MwpyNzd4a1BKS2lwdmc4aFdKT200V29WRWlHK0pGMmJCbXlTQjc3NGNtajh4aU1iTEZkNkdMRU80amFsVmFnUHc2CkVNeGtjeTJDZFo1WUhVSzRvbERvN2svY1Y4MVh3L0JYbm1kbGRTWWZqVzdtSzBOZFhLRm51TDY5Zm5KOFNYa3MKVk1WUERRK0QwL1ZRK2FaMHh5azBxWUpqU1pRb3p0a3lkMVhGVFFJREFRQUJBb0lCQUZGT1pJdVQ0bGNQcWNJWQova2RJNkNNQmRGdk4xazBVRUdNdXRnNFA1V2k5U1lFa0xFdFZtYktmMXQ3ZDl2RkY3NmxqU0h4UUhYQklRRmdOCitEcGlkMGZQUlFDUit6Q205akttOUF1SDlMZFI0dVI4SmdHM0dvRXpObWRydCtDcWVxanZ6Mi9iQTJkTmdRaFAKOGo0MmpseXlDd2pPb2lrR3BzSHpORkJBOGpZOHYxTjZmV3dHRDVvWkovSW5oSTdoRWxIWUNRSFdraVhlekpBTApkL2dJNi9ZcDdGNDhZbEpkOTNvWmxncG9Zam1MV3pDY0RxL1kvSzVUZDBFenYrdGZ6SUNVSlpxbkVyU3FBTGZwCmJiNEpGUDRadUQzKzhGTU1SZVBLOHVXeTQ3T2NHNTd6UUpNd2o0bjlSbHdDY21HcjhnbXppQ1BOdGV3SmhRRHAKM2ZNSFFURUNnWUVBMXJBVitDbHdyWFhKTXVrd21EVnhPeTV4dGdRdDZkMVdkZERmYmoyWlNwT2ZaWmcwWWdFRwo5RC9TR2xiK2NBTXZWNjZGV3pxWGYxcXJuSWJMbUtnR3Jzcnl1VUZUL3BvNkVsRHBRVnBaTGVTOE5RU0pXK2RhCmhRUVZleFZBYTNaelpjdXkwRzlzVHFMUm5rQnNWVHVpMHlXVStqZkdZelJvTWk1NzNyS1NDUU1DZ1lFQXdjbloKVThBZVJGck5vZFUwUStpYUxUdElSdzFpaG1GMGR0RVJubXFhamxjMHQrQ3lFd0E2enkvK2lSWWtjZVdIR2k3aAo3NFBLYkt5eWN5OXFwWHNMc2FSazJrUzZ6VEN2M2pkVUh1dkdYTHc5cE1SZDR0SVpidURrOFZsMlVIczlka2l3CjZES0txekowL0VWcms0NE9lSVMxbVl3MEtkc21KWFF1ZlZ4NW4yOENnWUJlRW1oK0JrS09iM2RMTEswVGRROTUKdkQ4dFg2Vnl2WDcrUHhrNGFCdDhkelU0UWpwcDIwTmQwWDFSOTE2a1hIRHBQZHJIZitRVWRQbVBxKzBZcGovUApaYlI0QXEwNGVnSUtOcFFQQS9UaHpFSEFCWTNleklCNG1yS0M3V3Y5NnJoa0daN3dBSEwzL2haVi9xcTVxbGtOCnBvRWlKMEJ5QmV2R1dXSUQwa0YxV3dLQmdGYytpYUpEN3h4MUNQamY1THpoL205NHJneVhBUkZnMUs4ZFp1STgKT2tMMURkM3V3aHo5MEh3d3JsYUhhbmNBai9lQXZlVTRIeTBYL3VzT29PUEpaclZlUHExcG5mUDlCR0IxNW1CWgpZNStpZTlvdk1kbUpIendrOGMyYXFrS0hpVjgwVUxqbzhEY3M2ekFjRE5lTWNBVmdNZVhrRWlQNTdzMlQ1YzQ0CmtPVHZBb0dCQUtrbmNXV0NDWEZ2Q3pRd05nNTNyWTFIVXozR2ZubWF2Qk1UVnZLazE2M3Nhcjk1VFJRM2RIWUcKZVJXNlRPL01kRVNpUHV6c0lZWE9XQ0FwaytGMjJ2eTNqUk5Fbk01S0J3RVVCc3JqdU1mNWhEd0crN2ZnVWtQZgp1TGl2VkNabDNMbW1aVHZyNmluamVKTC9wV1U5YnVwVFR4TnN1aGswMCtzTFZHRjFKTVRnCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
+---
+# Source: cilium-enterprise/charts/cilium/templates/hubble/tls-helm/server-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hubble-server-certs
+  namespace: cilium
+type: kubernetes.io/tls
+data:
+  ca.crt:  LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURFekNDQWZ1Z0F3SUJBZ0lRVnRnWTA4Lyt3amMra29ZMUxrTDZ6REFOQmdrcWhraUc5dzBCQVFzRkFEQVUKTVJJd0VBWURWUVFERXdsRGFXeHBkVzBnUTBFd0hoY05NalF3TmpFME1UVXdOekV5V2hjTk1qY3dOakUwTVRVdwpOekV5V2pBVU1SSXdFQVlEVlFRREV3bERhV3hwZFcwZ1EwRXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCCkR3QXdnZ0VLQW9JQkFRREtaNFZONGVqRWNGR0ppTmhFZ3U3azl5VmlMK2NKYVphUTlKcVV5VGZlRStXZjVQVDYKSU5sVDllTWwwV0FrY3NUczYvb3I4QkhJV3FlUUJGdGZ0TVpkcnE4Y1hPMFJwNHNKZkttZFNiVTAvaXRGdG1yWQpTVVB5OVVCeHVrOTExNVBSN1NKNDYwWEV0SUJyYTFpQ0ozRTVvalhPaENuNHdrdnA2Y0Z3a2FPcXh4NjZuL0F4Ck9WVWt0RS80VTNROEJiWGRsRzhwNStnZ1lGYktXNHhwNmE5MlJ3VTlaeDJoY09BQWxKK081cnVRUEl2U0VPb3cKT3E1YlRjaXZhOHRHdnN1VE5TYkJDb01zSzI0RzF2YXRhdnlTam14alVpb3lEUzFvSG9wczNsRVRMcFcxWmt3cApJWXJWRGhhZ3RiSDUzcUQrL0JjSHl5VyszWG0rM0ZCZTVMVEZBZ01CQUFHallUQmZNQTRHQTFVZER3RUIvd1FFCkF3SUNwREFkQmdOVkhTVUVGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0R3WURWUjBUQVFIL0JBVXcKQXdFQi96QWRCZ05WSFE0RUZnUVVwdGFjRkUxNUEyVkNQMnBpUkpjckxUenFyS1V3RFFZSktvWklodmNOQVFFTApCUUFEZ2dFQkFHWFBPWE9VNjNqOWtqU0hpVlQrd3hOanNUS3RNNS9jL0l3Rk5jY3BwZk1vVHNwSklsZU5HaHF2CmlnSFdyK2ltcStDTGIyTkMveVEvWVczSG13ZnEycER5YnZkYzA3SVR6aDc2dGlhMy9Ub29reUg2RDZTTklpRUwKc1RWNk1HclNrOUFxejRSTGJrVjNvQkx2dStRN0hTcnRVbS9QOURGRml3bmNmaXdLMGgzT2dTRFhVZVBWclVDQwpPU0dNbE0wWVB3eG0vOU1mOUFGMVVqMTRXUTVNb0IxUG5OcHZIbHpLUUVtOFNSL0k5NW1GYlNoVEYrbDh2ZVhKCmMxdk4ybXdJTm93QTNtUUJFeW14UlNWLzlHMG1YYmFraVo3WW4vVHFrd3NzdmVsWTlMSzh6WHFKZnNYRUFaNTMKYWZoL0t4ai9XZjRRRXM1VkJkNlJPbkcyWE9acWhTQT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURZakNDQWtxZ0F3SUJBZ0lRWlVvNGVRRC9zejNUUVIwbUNBQk9vVEFOQmdrcWhraUc5dzBCQVFzRkFEQVUKTVJJd0VBWURWUVFERXdsRGFXeHBkVzBnUTBFd0hoY05NalF3TmpFME1UVXdOekV6V2hjTk1qY3dOakUwTVRVdwpOekV6V2pBd01TNHdMQVlEVlFRRERDVXFMbVJsWTI5emRHVXRjR0Z1WkdFdWFIVmlZbXhsTFdkeWNHTXVZMmxzCmFYVnRMbWx2TUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUExcVdhb2I1RDhmd2wKT25ISlZCOGpNNys4Z2dtbHRjWWJvL2FzTjlmYUZvN2RuNVhSR2JhM0JwZWhYT1VoWXR4SU5jZmcxbHo4SEhLaQpwNGxmbGpTeG4xYUJIM1BJdXV5UlMyYTdna2NLTWs1YXAzbnJjRVRiZGQrYWl3MEllSTdhNVNZUDRqdjNUWWxGClM5NFpLaXg4ajZWUm5tdUdmZTlvNWt6bFF2NU96cWZGRjQvb2lIZ0Q2M3dTWnBUWUl2dGdiVlVTd0pMdjI0NkkKM085VW0rSjA5Mm1KQjJ6dWpOOEM2YmQ2Y2NyNldkbkRwQUw1WEl1Y3ZDMVhsUDNnN3k0UTNycW5CSlMxUE9jYgpLbFhFdDNEMFBrYUxUQjd4S0ZuV21hcEF5Y0pzbzFGRk0wRFVtK0pKb0kySC8wbTJUenAwRFdZUUhvd21xVklvCkU3MG1WWkFQNHdJREFRQUJvNEdUTUlHUU1BNEdBMVVkRHdFQi93UUVBd0lGb0RBZEJnTlZIU1VFRmpBVUJnZ3IKQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3REFZRFZSMFRBUUgvQkFJd0FEQWZCZ05WSFNNRUdEQVdnQlNtMXB3VQpUWGtEWlVJL2FtSkVseXN0UE9xc3BUQXdCZ05WSFJFRUtUQW5naVVxTG1SbFkyOXpkR1V0Y0dGdVpHRXVhSFZpCllteGxMV2R5Y0dNdVkybHNhWFZ0TG1sdk1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQkkvTW9lRlVaNzkxTW4KTEx4c3J2YjlleUNJb3dOZXV0RkdyQXJoODNGSDdiS0hOQ3hYd1ZwT0JFNGZUSlJmQzFqSm9ka2paNGdPZ0crVgpVVFhnRjVOMEExdmV6clRrc0J4SHdFRVFrOWVUK01maDB4WkxSdC9NRGE3YUpnRzdVRVIwVlh4WkFySkNjNUlQCmJzcG9Ca3J6NEpydEVPQlVEZjZDb2RuUEhnMEJremV4S3d3ditlRlNpdUg4VkJ3WkRJTThqS29xSnZSWEF6WnkKY3JibnpnVkxGS3FnWjRMUkZUQmZ6U0JFRk9RV3d1bmdOTVNheDJ5Vyswc1JmVGZwaHZhTWFweEFXSDhCak5GNwpLdElGQ2ZkejhoWUhqWEtQZW1LNjFsalRQUlpNNnRVcmtqKzF5UmtNd25mVmtIYlJhcXlIU3dpU0VVSUFLN1FvCkRRYXVDeGFQCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBMXFXYW9iNUQ4ZndsT25ISlZCOGpNNys4Z2dtbHRjWWJvL2FzTjlmYUZvN2RuNVhSCkdiYTNCcGVoWE9VaFl0eElOY2ZnMWx6OEhIS2lwNGxmbGpTeG4xYUJIM1BJdXV5UlMyYTdna2NLTWs1YXAzbnIKY0VUYmRkK2FpdzBJZUk3YTVTWVA0anYzVFlsRlM5NFpLaXg4ajZWUm5tdUdmZTlvNWt6bFF2NU96cWZGRjQvbwppSGdENjN3U1pwVFlJdnRnYlZVU3dKTHYyNDZJM085VW0rSjA5Mm1KQjJ6dWpOOEM2YmQ2Y2NyNldkbkRwQUw1ClhJdWN2QzFYbFAzZzd5NFEzcnFuQkpTMVBPY2JLbFhFdDNEMFBrYUxUQjd4S0ZuV21hcEF5Y0pzbzFGRk0wRFUKbStKSm9JMkgvMG0yVHpwMERXWVFIb3dtcVZJb0U3MG1WWkFQNHdJREFRQUJBb0lCQURZcGVYaGd3MUpYVnFtRgp0dENrUHNTN0YvMFVKQjFYRFBoMXNRVXlVVlNwM2lCN3RGU3h0ME5SbGFVVUtEV0M4akduNndNTVdZMXdHN3o4CnZBTHg3dlFPNXV3aDBqL2dtOVVUNmpLNGJFay9YajZ1VkF0elJKRmN4K2xZYzQvQU5Gbm9IYy92WTdyTDdaRjAKVEpOSXdIR2F2SnFsOVR6bjRXZGpkZUpPdTJJSG14Z1dpQjdoYlZHWWt4YnY0cllIR24vak4veUswM2QzcFY4egpwMFNUV0g2M3dZcUhXcmhmeHhxTmIxOUpMZ3lXU3BaMFFNL215RnEyazFKbjJYTTljZkN1RExncTdUVG1jM1B6ClNaWHRpZmhvK0hEb2I2MklEeTRHMCtXUHF1OExRbGIxb1dOZ1VUNXdrQXMzb0VPbzlJNUd2U0NuY3pzQm01T0kKc01qUDVxRUNnWUVBOVEvQitsM2lGb2M1S2Z2bDNFK1E1cW1ucW51VFRiaGxTZ2VJSHhQVlNKUVVmYVVIMDNZegpGVEM5RmtDOFJwQVdrbTlLa2FDMHJTTHJkRUxuY3JYUlcyRkhDL3o4c2hrVVIwUSsvbmsyaUlSZGloeTB1MVRiCng0MW9iZHkvMllTZ2p0WlRMTlgvbTZ1SkY2WTRyNDhpbTVPNFVRUGIya0dhUFRWMzFJemsvZk1DZ1lFQTREcE8Kc1lIeTRsNkZENGNqRDd3cXkrTml1MHQ0NkM2Sm1TSWpxU0xFMlFKbndaMmI5dklwT0VsbStPcWczUWdZejlLTAp2WEpRVkY1ZThiZSt1SHQ3RURRWEJzRXh1aXIzSDdjNzA0V2ZQeGpPWVczUmhJT0NVZ1BSOXFZTjhmVWZVR3ZDClVmcjArN2dXM2xyMTBkMWc5TlQyVisvQW9kR3pNODlUK1huRThsRUNnWUVBbCttR3c5OUM4ZGd0ZFhzemlKakMKS0ZydkZ0MjMrS3ZnRGo0UkFjTFhxa0F4VzVuYitoZ0JucGN5QUFOdE13akxGVWRzSUU1UThpcjlibnF5NHdjVwptdUQ0bTlQZUNjRkdNczk1aFdJNmpmSVAwamZ0U1Z0WFNxSzhJNjUrTnliaUtPbHZjaEhPZS8rZjRrc21SSjRrClEvRVVoeFF2UzJMemJCSWpFRjJ1N2tVQ2dZRUF1OHNaclVFUWt0Wm15cUo3a3VvZFRiV2JNeEg2cVRxUXMxZ00KVmROdzJlOVJ4cTZodVNrSHJNU05JVndnYmY0aUNheGtyTDNZMlZCUVpGRm53a3BvdnlGaFI1NzJidDBkSzhyaQpxRHo1S25jMEloVS9yS1FYdVdqSnFMRmFiSkxITHl1UkMrZ0sxZWRQLzlwZWx1MjZEbE51SGlnR1JZRERmVmpmCkU4b1FVSUVDZ1lBOWVmWkU0MDhzUmE1bWJZQ0xPVmJCaTVtekllRkhwQVdjVi9xUjlnZ0VZcFh1ZHhTZE8rSHYKenVjQXpkQUVVa0NZZzloMG4yUXZsUkgwTmNIRDlBdmw5a2YyWm5iMmxTRGcxQW0zUzMzUHNqWGxJVStsekpFQgpvZENuR3pkVk1RNURSRVpDS3MyOVhsZGcrY3NzU21MaTZQdFlHQmlpVUVJeXFHTzdGVFFWK0E9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cilium-config
+  namespace: cilium
+data:  
+  
+  # Configuration options to enable overlapping PodCIDR support for clustermesh
+  enable-cluster-aware-addressing: "false"
+  enable-inter-cluster-snat: "false"
+  
+  # Configuration options to enable SRv6 support
+  enable-srv6:               "false"
+  srv6-encap-mode:           "reduced"
+  srv6-locator-pool-enabled: "false"
+  
+  # Configuration options to enable multicast support
+  multicast-enabled: "false"
+  egress-gateway-ha-reconciliation-trigger-interval: "1s"
+
+  # Identity allocation mode selects how identities are shared between cilium
+  # nodes by setting how they are stored. The options are "crd" or "kvstore".
+  # - "crd" stores identities in kubernetes as CRDs (custom resource definition).
+  #   These can be queried with:
+  #     kubectl get ciliumid
+  # - "kvstore" stores identities in an etcd kvstore, that is
+  #   configured below. Cilium versions before 1.6 supported only the kvstore
+  #   backend. Upgrades from these older cilium versions should continue using
+  #   the kvstore by commenting out the identity-allocation-mode below, or
+  #   setting it to "kvstore".
+  identity-allocation-mode: crd
+  identity-heartbeat-timeout: "30m0s"
+  identity-gc-interval: "15m0s"
+  cilium-endpoint-gc-interval: "5m0s"
+  nodes-gc-interval: "5m0s"
+  skip-cnp-status-startup-clean: "false"
+
+  # If you want to run cilium in debug mode change this value to true
+  debug: "true"
+  # The agent can be put into the following three policy enforcement modes
+  # default, always and never.
+  # https://docs.cilium.io/en/latest/security/policy/intro/#policy-enforcement-modes
+  enable-policy: "default"
+  # If you want metrics enabled in all of your Cilium agents, set the port for
+  # which the Cilium agents will have their metrics exposed.
+  # This option deprecates the "prometheus-serve-addr" in the
+  # "cilium-metrics-config" ConfigMap
+  # NOTE that this will open the port on ALL nodes where Cilium pods are
+  # scheduled.
+  prometheus-serve-addr: ":9962"
+  # A space-separated list of controller groups for which to enable metrics.
+  # The special values of "all" and "none" are supported.
+  controller-group-metrics:
+    write-cni-file
+    sync-host-ips
+    sync-lb-maps-with-k8s-services
+  # Port to expose Envoy metrics (e.g. "9964"). Envoy metrics listener will be disabled if this
+  # field is not set.
+  proxy-prometheus-port: "9964"
+  # If you want metrics enabled in cilium-operator, set the port for
+  # which the Cilium Operator will have their metrics exposed.
+  # NOTE that this will open the port on the nodes where Cilium operator pod
+  # is scheduled.
+  operator-prometheus-serve-addr: ":9963"
+  enable-metrics: "true"
+
+  # Enable IPv4 addressing. If enabled, all endpoints are allocated an IPv4
+  # address.
+  enable-ipv4: "true"
+
+  # Enable IPv6 addressing. If enabled, all endpoints are allocated an IPv6
+  # address.
+  enable-ipv6: "false"
+  # Users who wish to specify their own custom CNI configuration file must set
+  # custom-cni-conf to "true", otherwise Cilium may overwrite the configuration.
+  custom-cni-conf: "false"
+  enable-bpf-clock-probe: "false"
+  # If you want cilium monitor to aggregate tracing for packets, set this level
+  # to "low", "medium", or "maximum". The higher the level, the less packets
+  # that will be seen in monitor output.
+  monitor-aggregation: medium
+
+  # The monitor aggregation interval governs the typical time between monitor
+  # notification events for each allowed connection.
+  #
+  # Only effective when monitor aggregation is set to "medium" or higher.
+  monitor-aggregation-interval: "5s"
+
+  # The monitor aggregation flags determine which TCP flags which, upon the
+  # first observation, cause monitor notifications to be generated.
+  #
+  # Only effective when monitor aggregation is set to "medium" or higher.
+  monitor-aggregation-flags: all
+  # Specifies the ratio (0.0-1.0] of total system memory to use for dynamic
+  # sizing of the TCP CT, non-TCP CT, NAT and policy BPF maps.
+  bpf-map-dynamic-size-ratio: "0.0025"
+  # bpf-policy-map-max specifies the maximum number of entries in endpoint
+  # policy map (per endpoint)
+  bpf-policy-map-max: "16384"
+  # bpf-lb-map-max specifies the maximum number of entries in bpf lb service,
+  # backend and affinity maps.
+  bpf-lb-map-max: "65536"
+  bpf-lb-external-clusterip: "false"
+
+  # Pre-allocation of map entries allows per-packet latency to be reduced, at
+  # the expense of up-front memory allocation for the entries in the maps. The
+  # default value below will minimize memory usage in the default installation;
+  # users who are sensitive to latency may consider setting this to "true".
+  #
+  # This option was introduced in Cilium 1.4. Cilium 1.3 and earlier ignore
+  # this option and behave as though it is set to "true".
+  #
+  # If this value is modified, then during the next Cilium startup the restore
+  # of existing endpoints and tracking of ongoing connections may be disrupted.
+  # As a result, reply packets may be dropped and the load-balancing decisions
+  # for established connections may change.
+  #
+  # If this option is set to "false" during an upgrade from 1.3 or earlier to
+  # 1.4 or later, then it may cause one-time disruptions during the upgrade.
+  preallocate-bpf-maps: "false"
+
+  # Regular expression matching compatible Istio sidecar istio-proxy
+  # container image names
+  sidecar-istio-proxy-image: "cilium/istio_proxy"
+
+  # Name of the cluster. Only relevant when building a mesh of clusters.
+  cluster-name: decoste-panda
+  # Unique ID of the cluster. Must be unique across all conneted clusters and
+  # in the range of 1 and 255. Only relevant when building a mesh of clusters.
+  cluster-id: "0"
+
+  # Encapsulation mode for communication between nodes
+  # Possible values:
+  #   - disabled
+  #   - vxlan (default)
+  #   - geneve
+  routing-mode: "tunnel"
+  tunnel-protocol: "vxlan"
+  service-no-backend-response: "reject"
+
+
+  # Enables L7 proxy for L7 policy enforcement and visibility
+  enable-l7-proxy: "true"
+
+  enable-ipv4-masquerade: "true"
+  enable-ipv4-big-tcp: "false"
+  enable-ipv6-big-tcp: "false"
+  enable-ipv6-masquerade: "true"
+  enable-masquerade-to-route-source: "false"
+
+  enable-xt-socket-fallback: "true"
+  install-no-conntrack-iptables-rules: "false"
+
+  auto-direct-node-routes: "false"
+  enable-local-redirect-policy: "false"
+
+  kube-proxy-replacement: "disabled"
+  bpf-lb-sock: "false"
+  enable-health-check-nodeport: "true"
+  enable-health-check-loadbalancer-ip: "false"
+  node-port-bind-protection: "true"
+  enable-auto-protect-node-port-range: "true"
+  bpf-lb-acceleration: "disabled"
+  enable-svc-source-range-check: "true"
+  enable-l2-neigh-discovery: "true"
+  arping-refresh-period: "30s"
+  enable-k8s-networkpolicy: "true"
+  # Tell the agent to generate and write a CNI configuration file
+  write-cni-conf-when-ready: /host/etc/cni/net.d/05-cilium.conflist
+  cni-exclusive: "true"
+  cni-log-file: "/var/run/cilium/cilium-cni.log"
+  enable-endpoint-health-checking: "true"
+  enable-health-checking: "true"
+  enable-well-known-identities: "false"
+  enable-remote-node-identity: "true"
+  synchronize-k8s-nodes: "true"
+  operator-api-serve-addr: "127.0.0.1:9234"
+  # Enable Hubble gRPC service.
+  enable-hubble: "true"
+  # UNIX domain socket for Hubble server to listen to.
+  hubble-socket-path: "/var/run/cilium/hubble.sock"
+  # Address to expose Hubble metrics (e.g. ":7070"). Metrics server will be disabled if this
+  # field is not set.
+  hubble-metrics-server: ":9965"
+  # A space separated list of metrics to enable. See [0] for available metrics.
+  #
+  # https://github.com/cilium/hubble/blob/master/Documentation/metrics.md
+  hubble-metrics:
+    dns:query;sourceContext=workload-name;destinationContext=workload-name
+    drop:sourceContext=identity;destinationContext=identity;labelsContext=source_workload,destination_workload
+    tcp
+    flow
+    port-distribution
+    http
+    flows-to-world
+    policy
+  enable-hubble-open-metrics: "true"
+  hubble-export-file-max-size-mb: "10"
+  hubble-export-file-max-backups: "5"
+  # An additional address for Hubble server to listen to (e.g. ":4244").
+  hubble-listen-address: ":4244"
+  hubble-disable-tls: "false"
+  hubble-tls-cert-file: /var/lib/cilium/tls/hubble/server.crt
+  hubble-tls-key-file: /var/lib/cilium/tls/hubble/server.key
+  hubble-tls-client-ca-files: /var/lib/cilium/tls/hubble/client-ca.crt
+  ipam: "cluster-pool"
+  ipam-cilium-node-update-rate: "15s"
+  cluster-pool-ipv4-cidr: "192.168.0.0/16"
+  cluster-pool-ipv4-mask-size: "24"
+  egress-gateway-reconciliation-trigger-interval: "1s"
+  enable-vtep: "false"
+  vtep-endpoint: ""
+  vtep-cidr: ""
+  vtep-mask: ""
+  vtep-mac: ""
+  enable-k8s-endpoint-slice: "true"
+  enable-bgp-control-plane: "false"
+  procfs: "/host/proc"
+  bpf-root: "/sys/fs/bpf"
+  cgroup-root: "/run/cilium/cgroupv2"
+  enable-cilium-endpoint-slice: "true"
+  enable-k8s-terminating-endpoint: "true"
+  enable-sctp: "false"
+
+  k8s-client-qps: "10"
+  k8s-client-burst: "20"
+  remove-cilium-node-taints: "true"
+  set-cilium-node-taints: "true"
+  set-cilium-is-up-condition: "true"
+  unmanaged-pod-watcher-interval: "15"
+  # default DNS proxy to transparent mode in non-chaining modes
+  dnsproxy-enable-transparent-mode: "true"
+  tofqdns-dns-reject-response-code: "refused"
+  tofqdns-enable-dns-compression: "true"
+  tofqdns-endpoint-max-ip-per-hostname: "50"
+  tofqdns-idle-connection-grace-period: "0s"
+  tofqdns-max-deferred-connection-deletes: "10000"
+  tofqdns-proxy-response-max-delay: "100ms"
+  agent-not-ready-taint-key: "node.cilium.io/agent-not-ready"
+
+  mesh-auth-enabled: "true"
+  mesh-auth-queue-size: "1024"
+  mesh-auth-rotated-identities-queue-size: "1024"
+  mesh-auth-gc-interval: "5m0s"
+
+  proxy-xff-num-trusted-hops-ingress: "0"
+  proxy-xff-num-trusted-hops-egress: "0"
+  proxy-connect-timeout: "2"
+  proxy-max-requests-per-connection: "0"
+  proxy-max-connection-duration-seconds: "0"
+  proxy-idle-timeout-seconds: "60"
+
+  external-envoy-proxy: "false"
+  max-connected-clusters: "255"
+
+# Extra config allows adding arbitrary properties to the cilium config.
+# By putting it at the end of the ConfigMap, it's also possible to override existing properties.
+---
+# Source: cilium-enterprise/charts/cilium/templates/hubble-relay/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hubble-relay-config
+  namespace: cilium
+data:
+  config.yaml: |
+    cluster-name: decoste-panda
+    peer-service: "hubble-peer.cilium.svc.cluster.local:443"
+    listen-address: :4245
+    gops: true
+    gops-port: "9893"
+    dial-timeout: 15s
+    retry-timeout: 15s
+    sort-buffer-len-max: 
+    sort-buffer-drain-timeout: 
+    tls-hubble-client-cert-file: /var/lib/hubble-relay/tls/client.crt
+    tls-hubble-client-key-file: /var/lib/hubble-relay/tls/client.key
+    tls-hubble-server-ca-files: /var/lib/hubble-relay/tls/hubble-server-ca.crt
+    disable-server-tls: true
+---
+# Source: cilium-enterprise/charts/hubble-ui/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hubble-ui-nginx
+  namespace: cilium
+data:
+  nginx.conf: "map $http_upgrade $connection_upgrade {\n  default upgrade;\n  '' close;\n}\n\nserver {\n    listen       8081;\n    listen       [::]:8081;\n    server_name  localhost;\n\n    client_max_body_size 1G;\n    proxy_buffer_size 16k;\n    proxy_busy_buffers_size 24k;\n    proxy_buffers 64 8k;\n    subrequest_output_buffer_size 8k;\n\n    location /healthz {\n        access_log off;\n        add_header Content-Type text/plain;\n        return 200 'ok';\n    }\n\n    location / {\n        proxy_set_header Host $host;\n        proxy_set_header X-Real-IP $remote_addr;\n\n        # CORS\n        add_header Access-Control-Allow-Methods \"GET, POST, PUT, HEAD, DELETE, OPTIONS\";\n        add_header Access-Control-Allow-Origin *;\n        add_header Access-Control-Max-Age 1728000;\n        add_header Access-Control-Expose-Headers content-length,grpc-status,grpc-message;\n        add_header Access-Control-Allow-Headers range,keep-alive,user-agent,cache-control,content-type,content-transfer-encoding,x-accept-content-transfer-encoding,x-accept-response-streaming,x-user-agent,x-grpc-web,grpc-timeout;\n        if ($request_method = OPTIONS) {\n            return 204;\n        }\n        # /CORS\n\n        location = / {\n          proxy_pass http://localhost:8090/web/;\n        }\n        location = /service-map {\n          proxy_pass http://localhost:8090/web/;\n        }\n        location = /policies {\n          proxy_pass http://localhost:8090/web/;\n        }\n        location = /ps-tree {\n          proxy_pass http://localhost:8090/web/;\n        }\n        location = /error {\n          proxy_pass http://localhost:8090/web/;\n        }\n\n        location /hubble-ui-api {\n            proxy_pass_request_headers on;\n            proxy_pass http://localhost:8090/hubble-ui-api;\n        }\n        location /oauth2 {\n            proxy_pass_request_headers on;\n            proxy_pass http://localhost:8090/oauth2;\n        }\n        location / {\n            proxy_pass http://127.0.0.1:8082;\n        }\n    }\n}\nserver {\n    listen       8082;\n    listen       [::]:8082;\n    server_name  localhost;\n\n    root /app;\n    index index.html;\n\n    location / {\n        try_files $uri $uri/ /index.html;\n    }\n}"
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-agent/clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cilium
+  labels:
+    app.kubernetes.io/part-of: cilium
+rules:
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - networkpolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - discovery.k8s.io
+  resources:
+  - endpointslices
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  - services
+  - pods
+  - endpoints
+  - nodes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - list
+  - watch
+  # This is used when validating policies in preflight. This will need to stay
+  # until we figure out how to avoid "get" inside the preflight, and then
+  # should be removed ideally.
+  - get
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumloadbalancerippools
+  - ciliumbgppeeringpolicies
+  - ciliumbgpnodeconfigs
+  - ciliumbgpadvertisements
+  - ciliumbgppeerconfigs
+  - ciliumclusterwideenvoyconfigs
+  - ciliumclusterwidenetworkpolicies
+  - ciliumegressgatewaypolicies
+  - ciliumendpoints
+  - ciliumendpointslices
+  - ciliumenvoyconfigs
+  - ciliumidentities
+  - ciliumlocalredirectpolicies
+  - ciliumnetworkpolicies
+  - ciliumnodes
+  - ciliumnodeconfigs
+  - ciliumcidrgroups
+  - ciliuml2announcementpolicies
+  - ciliumpodippools
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumidentities
+  - ciliumendpoints
+  - ciliumnodes
+  verbs:
+  - create
+- apiGroups:
+  - cilium.io
+  # To synchronize garbage collection of such resources
+  resources:
+  - ciliumidentities
+  verbs:
+  - update
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumendpoints
+  verbs:
+  - delete
+  - get
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumnodes
+  - ciliumnodes/status
+  verbs:
+  - get
+  - update
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumnetworkpolicies/status
+  - ciliumclusterwidenetworkpolicies/status
+  - ciliumendpoints/status
+  - ciliumendpoints
+  - ciliuml2announcementpolicies/status
+  - ciliumbgpnodeconfigs/status
+  verbs:
+  - patch
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-agent/enterprise-clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: enterprise-cilium
+  labels:
+    app.kubernetes.io/part-of: cilium
+rules:
+- apiGroups:
+  - isovalent.com
+  resources:
+  - isovalentegressgatewaypolicies
+  - isovalentsrv6sidmanagers
+  - isovalentsrv6locatorpools
+  - isovalentsrv6egresspolicies
+  - isovalentvrfs
+  - isovalentmulticastgroups
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - isovalent.com
+  resources:
+  - isovalentsrv6sidmanagers/status
+  verbs:
+  - patch
+- apiGroups:
+  - isovalent.com
+  resources:
+  - isovalentsrv6egresspolicies
+  verbs:
+  - create
+  - delete
+  - get
+- apiGroups:
+  - isovalent.com
+  resources:
+  - isovalentmulticastnodes
+  - isovalentmulticastnodes/status
+  verbs:
+  - create
+  - update
+  - delete
+  - get
+  - watch
+  - list
+  - patch
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-operator/clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cilium-operator
+  labels:
+    app.kubernetes.io/part-of: cilium
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+  # to automatically delete [core|kube]dns pods so that are starting to being
+  # managed by Cilium
+  - delete
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  # To remove node taints
+  - nodes
+  # To set NetworkUnavailable false on startup
+  - nodes/status
+  verbs:
+  - patch
+- apiGroups:
+  - discovery.k8s.io
+  resources:
+  - endpointslices
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  # to perform LB IP allocation for BGP
+  - services/status
+  verbs:
+  - update
+  - patch
+- apiGroups:
+  - ""
+  resources:
+  # to check apiserver connectivity
+  - namespaces
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  # to perform the translation of a CNP that contains `ToGroup` to its endpoints
+  - services
+  - endpoints
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumnetworkpolicies
+  - ciliumclusterwidenetworkpolicies
+  verbs:
+  # Create auto-generated CNPs and CCNPs from Policies that have 'toGroups'
+  - create
+  - update
+  - deletecollection
+  # To update the status of the CNPs and CCNPs
+  - patch
+  - get
+  - list
+  - watch
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumnetworkpolicies/status
+  - ciliumclusterwidenetworkpolicies/status
+  verbs:
+  # Update the auto-generated CNPs and CCNPs status.
+  - patch
+  - update
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumendpoints
+  - ciliumidentities
+  verbs:
+  # To perform garbage collection of such resources
+  - delete
+  - list
+  - watch
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumidentities
+  verbs:
+  # To synchronize garbage collection of such resources
+  - update
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumnodes
+  verbs:
+  - create
+  - update
+  - get
+  - list
+  - watch
+    # To perform CiliumNode garbage collector
+  - delete
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumnodes/status
+  verbs:
+  - update
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumendpointslices
+  - ciliumenvoyconfigs
+  - ciliumbgppeerconfigs
+  - ciliumbgpadvertisements
+  - ciliumbgpnodeconfigs
+  verbs:
+  - create
+  - update
+  - get
+  - list
+  - watch
+  - delete
+  - patch
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - create
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - update
+  resourceNames:
+  - ciliumloadbalancerippools.cilium.io
+  - ciliumbgppeeringpolicies.cilium.io
+  - ciliumbgpclusterconfigs.cilium.io
+  - ciliumbgppeerconfigs.cilium.io
+  - ciliumbgpadvertisements.cilium.io
+  - ciliumbgpnodeconfigs.cilium.io
+  - ciliumbgpnodeconfigoverrides.cilium.io
+  - ciliumclusterwideenvoyconfigs.cilium.io
+  - ciliumclusterwidenetworkpolicies.cilium.io
+  - ciliumegressgatewaypolicies.cilium.io
+  - ciliumendpoints.cilium.io
+  - ciliumendpointslices.cilium.io
+  - ciliumenvoyconfigs.cilium.io
+  - ciliumexternalworkloads.cilium.io
+  - ciliumidentities.cilium.io
+  - ciliumlocalredirectpolicies.cilium.io
+  - ciliumnetworkpolicies.cilium.io
+  - ciliumnodes.cilium.io
+  - ciliumnodeconfigs.cilium.io
+  - ciliumcidrgroups.cilium.io
+  - ciliuml2announcementpolicies.cilium.io
+  - ciliumpodippools.cilium.io
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumloadbalancerippools
+  - ciliumpodippools
+  - ciliumbgpclusterconfigs
+  - ciliumbgpnodeconfigoverrides
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+    - cilium.io
+  resources:
+    - ciliumpodippools
+  verbs:
+    - create
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumloadbalancerippools/status
+  verbs:
+  - patch
+# For cilium-operator running in HA mode.
+#
+# Cilium operator running in HA mode requires the use of ResourceLock for Leader Election
+# between multiple running instances.
+# The preferred way of doing this is to use LeasesResourceLock as edits to Leases are less
+# common and fewer objects in the cluster watch "all Leases".
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - create
+  - get
+  - update
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-operator/enterprise-clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: enterprise-cilium-operator
+  labels:
+    app.kubernetes.io/part-of: cilium
+rules:
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - update
+  resourceNames:
+  - isovalentmulticastgroups.isovalent.com
+  - isovalentmulticastnodes.isovalent.com
+  - isovalentegressgatewaypolicies.isovalent.com
+  - isovalentfqdngroups.isovalent.com
+  - isovalentpodnetworks.isovalent.com
+  - isovalentsrv6egresspolicies.isovalent.com
+  - isovalentsrv6sidmanagers.isovalent.com
+  - isovalentsrv6locatorpools.isovalent.com
+  - isovalentvrfs.isovalent.com
+- apiGroups:
+  - isovalent.com
+  resources:
+  - isovalentsrv6locatorpools
+  - isovalentfqdngroups
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - isovalent.com
+  resources:
+  - isovalentsrv6sidmanagers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - cilium.io
+  resources:
+  - ciliumcidrgroups
+  verbs:
+  - create
+  - patch
+  - delete
+- apiGroups:
+  - isovalent.com
+  resources:
+  - isovalentegressgatewaypolicies
+  verbs:
+  # to allow IEGP watcher
+  - watch
+  - list
+- apiGroups:
+  - isovalent.com
+  resources:
+  - isovalentegressgatewaypolicies/status
+  verbs:
+  # to allow IEGPs status.groupStatus updates
+  - update
+---
+# Source: cilium-enterprise/charts/hubble-ui/templates/clusterrole.yaml
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hubble-ui
+rules:
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - networkpolicies
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - componentstatuses
+      - endpoints
+      - namespaces
+      - nodes
+      - pods
+      - services
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - apiextensions.k8s.io
+    resources:
+      - customresourcedefinitions
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - cilium.io
+    resources:
+      - "*"
+    verbs:
+      - get
+      - list
+      - watch
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-agent/clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cilium
+  labels:
+    app.kubernetes.io/part-of: cilium
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cilium
+subjects:
+- kind: ServiceAccount
+  name: "cilium"
+  namespace: cilium
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-agent/enterprise-clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: enterprise-cilium
+  labels:
+    app.kubernetes.io/part-of: cilium
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: enterprise-cilium
+subjects:
+- kind: ServiceAccount
+  name: "cilium"
+  namespace: cilium
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-operator/clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cilium-operator
+  labels:
+    app.kubernetes.io/part-of: cilium
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cilium-operator
+subjects:
+- kind: ServiceAccount
+  name: "cilium-operator"
+  namespace: cilium
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-operator/enterprise-clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: enterprise-cilium-operator
+  labels:
+    app.kubernetes.io/part-of: cilium
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: enterprise-cilium-operator
+subjects:
+- kind: ServiceAccount
+  name: "cilium-operator"
+  namespace: cilium
+---
+# Source: cilium-enterprise/charts/hubble-ui/templates/clusterrolebinding.yaml
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hubble-ui
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: hubble-ui
+subjects:
+- kind: ServiceAccount
+  namespace: cilium
+  name: "hubble-ui"
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-agent/role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: cilium-config-agent
+  namespace: cilium
+  labels:
+    app.kubernetes.io/part-of: cilium
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-agent/rolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cilium-config-agent
+  namespace: cilium
+  labels:
+    app.kubernetes.io/part-of: cilium
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cilium-config-agent
+subjects:
+  - kind: ServiceAccount
+    name: "cilium"
+    namespace: cilium
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-agent/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: cilium-agent
+  namespace: cilium
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9964"
+  labels:
+    k8s-app: cilium
+    app.kubernetes.io/name: cilium-agent
+    app.kubernetes.io/part-of: cilium
+spec:
+  clusterIP: None
+  type: ClusterIP
+  selector:
+    k8s-app: cilium
+  ports:
+  - name: envoy-metrics
+    port: 9964
+    protocol: TCP
+    targetPort: envoy-metrics
+---
+# Source: cilium-enterprise/charts/cilium/templates/hubble-relay/service.yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: hubble-relay
+  namespace: cilium
+  labels:
+    k8s-app: hubble-relay
+    app.kubernetes.io/name: hubble-relay
+    app.kubernetes.io/part-of: cilium
+spec:
+  type: "ClusterIP"
+  selector:
+    k8s-app: hubble-relay
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 4245
+---
+# Source: cilium-enterprise/charts/cilium/templates/hubble/metrics-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hubble-metrics
+  namespace: cilium
+  labels:
+    k8s-app: hubble
+    app.kubernetes.io/name: hubble
+    app.kubernetes.io/part-of: cilium
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9965"
+spec:
+  clusterIP: None
+  type: ClusterIP
+  ports:
+  - name: hubble-metrics
+    port: 9965
+    protocol: TCP
+    targetPort: hubble-metrics
+  selector:
+    k8s-app: cilium
+---
+# Source: cilium-enterprise/charts/cilium/templates/hubble/peer-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hubble-peer
+  namespace: cilium
+  labels:
+    k8s-app: cilium
+    app.kubernetes.io/part-of: cilium
+    app.kubernetes.io/name: hubble-peer
+spec:
+  selector:
+    k8s-app: cilium
+  ports:
+  - name: peer-service
+    port: 443
+    protocol: TCP
+    targetPort: 4244
+  internalTrafficPolicy: Local
+---
+# Source: cilium-enterprise/charts/hubble-ui/templates/service.yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: hubble-ui
+  labels:
+    k8s-app: hubble-ui
+  namespace: cilium
+spec:
+  type: "ClusterIP"
+  selector:
+    k8s-app: hubble-ui
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8081
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-agent/daemonset.yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cilium
+  namespace: cilium
+  labels:
+    k8s-app: cilium
+    app.kubernetes.io/part-of: cilium
+    app.kubernetes.io/name: cilium-agent
+spec:
+  selector:
+    matchLabels:
+      k8s-app: cilium
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 2
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: "9962"
+        prometheus.io/scrape: "true"
+        # Set app AppArmor's profile to "unconfined". The value of this annotation
+        # can be modified as long users know which profiles they have available
+        # in AppArmor.
+        container.apparmor.security.beta.kubernetes.io/cilium-agent: "unconfined"
+        container.apparmor.security.beta.kubernetes.io/clean-cilium-state: "unconfined"
+        container.apparmor.security.beta.kubernetes.io/mount-cgroup: "unconfined"
+        container.apparmor.security.beta.kubernetes.io/apply-sysctl-overwrites: "unconfined"
+      labels:
+        k8s-app: cilium
+        app.kubernetes.io/name: cilium-agent
+        app.kubernetes.io/part-of: cilium
+    spec:
+      containers:
+      - name: cilium-agent
+        image: "quay.io/isovalent/cilium:v1.15.6-cee.1"
+        imagePullPolicy: IfNotPresent
+        command:
+        - cilium-agent
+        args:
+        - --config-dir=/tmp/cilium/config-map
+        startupProbe:
+          httpGet:
+            host: "127.0.0.1"
+            path: /healthz
+            port: 9879
+            scheme: HTTP
+            httpHeaders:
+            - name: "brief"
+              value: "true"
+          failureThreshold: 105
+          periodSeconds: 2
+          successThreshold: 1
+          initialDelaySeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - cilium
+            - status
+            - --brief
+          periodSeconds: 30
+          successThreshold: 1
+          failureThreshold: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          exec:
+            command:
+            - cilium
+            - status
+            - --brief
+          periodSeconds: 30
+          successThreshold: 1
+          failureThreshold: 3
+          timeoutSeconds: 5
+        env:
+        - name: K8S_NODE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        - name: CILIUM_K8S_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: CILIUM_CLUSTERMESH_CONFIG
+          value: /var/lib/cilium/clustermesh/
+        - name: GOMEMLIMIT
+          valueFrom:
+            resourceFieldRef:
+              resource: limits.memory
+              divisor: '1'
+        - name: KUBERNETES_SERVICE_HOST
+          value: "decoste-pa-decoste-panda-8dbd25-m9adm3lq.hcp.eastus.azmk8s.io"
+        - name: KUBERNETES_SERVICE_PORT
+          value: "443"
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - "bash"
+              - "-c"
+              - |
+                    set -o errexit
+                    set -o pipefail
+                    set -o nounset
+                    
+                    # When running in AWS ENI mode, it's likely that 'aws-node' has
+                    # had a chance to install SNAT iptables rules. These can result
+                    # in dropped traffic, so we should attempt to remove them.
+                    # We do it using a 'postStart' hook since this may need to run
+                    # for nodes which might have already been init'ed but may still
+                    # have dangling rules. This is safe because there are no
+                    # dependencies on anything that is part of the startup script
+                    # itself, and can be safely run multiple times per node (e.g. in
+                    # case of a restart).
+                    if [[ "$(iptables-save | grep -E -c 'AWS-SNAT-CHAIN|AWS-CONNMARK-CHAIN')" != "0" ]];
+                    then
+                        echo 'Deleting iptables rules created by the AWS CNI VPC plugin'
+                        iptables-save | grep -E -v 'AWS-SNAT-CHAIN|AWS-CONNMARK-CHAIN' | iptables-restore
+                    fi
+                    echo 'Done!'
+                    
+          preStop:
+            exec:
+              command:
+              - /cni-uninstall.sh
+        ports:
+        - name: peer-service
+          containerPort: 4244
+          hostPort: 4244
+          protocol: TCP
+        - name: prometheus
+          containerPort: 9962
+          hostPort: 9962
+          protocol: TCP
+        - name: envoy-metrics
+          containerPort: 9964
+          hostPort: 9964
+          protocol: TCP
+        - name: hubble-metrics
+          containerPort: 9965
+          hostPort: 9965
+          protocol: TCP
+        securityContext:
+          seLinuxOptions:
+            level: s0
+            type: spc_t
+          capabilities:
+            add:
+              - CHOWN
+              - KILL
+              - NET_ADMIN
+              - NET_RAW
+              - IPC_LOCK
+              - SYS_MODULE
+              - SYS_ADMIN
+              - SYS_RESOURCE
+              - DAC_OVERRIDE
+              - FOWNER
+              - SETGID
+              - SETUID
+            drop:
+              - ALL
+        terminationMessagePolicy: FallbackToLogsOnError
+        volumeMounts:
+        # Unprivileged containers need to mount /proc/sys/net from the host
+        # to have write access
+        - mountPath: /host/proc/sys/net
+          name: host-proc-sys-net
+        # Unprivileged containers need to mount /proc/sys/kernel from the host
+        # to have write access
+        - mountPath: /host/proc/sys/kernel
+          name: host-proc-sys-kernel
+        - name: bpf-maps
+          mountPath: /sys/fs/bpf
+          # Unprivileged containers can't set mount propagation to bidirectional
+          # in this case we will mount the bpf fs from an init container that
+          # is privileged and set the mount propagation from host to container
+          # in Cilium.
+          mountPropagation: HostToContainer
+        - name: cilium-run
+          mountPath: /var/run/cilium
+        - name: etc-cni-netd
+          mountPath: /host/etc/cni/net.d
+        - name: clustermesh-secrets
+          mountPath: /var/lib/cilium/clustermesh
+          readOnly: true
+          # Needed to be able to load kernel modules
+        - name: lib-modules
+          mountPath: /lib/modules
+          readOnly: true
+        - name: xtables-lock
+          mountPath: /run/xtables.lock
+        - name: hubble-tls
+          mountPath: /var/lib/cilium/tls/hubble
+          readOnly: true
+        - name: tmp
+          mountPath: /tmp
+      initContainers:
+      - name: config
+        image: "quay.io/isovalent/cilium:v1.15.6-cee.1"
+        imagePullPolicy: IfNotPresent
+        command:
+        - cilium-dbg
+        - build-config
+        env:
+        - name: K8S_NODE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        - name: CILIUM_K8S_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: KUBERNETES_SERVICE_HOST
+          value: "decoste-pa-decoste-panda-8dbd25-m9adm3lq.hcp.eastus.azmk8s.io"
+        - name: KUBERNETES_SERVICE_PORT
+          value: "443"
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+        terminationMessagePolicy: FallbackToLogsOnError
+      # Required to mount cgroup2 filesystem on the underlying Kubernetes node.
+      # We use nsenter command with host's cgroup and mount namespaces enabled.
+      - name: mount-cgroup
+        image: "quay.io/isovalent/cilium:v1.15.6-cee.1"
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: CGROUP_ROOT
+          value: /run/cilium/cgroupv2
+        - name: BIN_PATH
+          value: /opt/cni/bin
+        command:
+        - sh
+        - -ec
+        # The statically linked Go program binary is invoked to avoid any
+        # dependency on utilities like sh and mount that can be missing on certain
+        # distros installed on the underlying host. Copy the binary to the
+        # same directory where we install cilium cni plugin so that exec permissions
+        # are available.
+        - |
+          cp /usr/bin/cilium-mount /hostbin/cilium-mount;
+          nsenter --cgroup=/hostproc/1/ns/cgroup --mount=/hostproc/1/ns/mnt "${BIN_PATH}/cilium-mount" $CGROUP_ROOT;
+          rm /hostbin/cilium-mount
+        volumeMounts:
+        - name: hostproc
+          mountPath: /hostproc
+        - name: cni-path
+          mountPath: /hostbin
+        terminationMessagePolicy: FallbackToLogsOnError
+        securityContext:
+          seLinuxOptions:
+            level: s0
+            type: spc_t
+          capabilities:
+            add:
+              - SYS_ADMIN
+              - SYS_CHROOT
+              - SYS_PTRACE
+            drop:
+              - ALL
+      - name: apply-sysctl-overwrites
+        image: "quay.io/isovalent/cilium:v1.15.6-cee.1"
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: BIN_PATH
+          value: /opt/cni/bin
+        command:
+        - sh
+        - -ec
+        # The statically linked Go program binary is invoked to avoid any
+        # dependency on utilities like sh that can be missing on certain
+        # distros installed on the underlying host. Copy the binary to the
+        # same directory where we install cilium cni plugin so that exec permissions
+        # are available.
+        - |
+          cp /usr/bin/cilium-sysctlfix /hostbin/cilium-sysctlfix;
+          nsenter --mount=/hostproc/1/ns/mnt "${BIN_PATH}/cilium-sysctlfix";
+          rm /hostbin/cilium-sysctlfix
+        volumeMounts:
+        - name: hostproc
+          mountPath: /hostproc
+        - name: cni-path
+          mountPath: /hostbin
+        terminationMessagePolicy: FallbackToLogsOnError
+        securityContext:
+          seLinuxOptions:
+            level: s0
+            type: spc_t
+          capabilities:
+            add:
+              - SYS_ADMIN
+              - SYS_CHROOT
+              - SYS_PTRACE
+            drop:
+              - ALL
+      # Mount the bpf fs if it is not mounted. We will perform this task
+      # from a privileged container because the mount propagation bidirectional
+      # only works from privileged containers.
+      - name: mount-bpf-fs
+        image: "quay.io/isovalent/cilium:v1.15.6-cee.1"
+        imagePullPolicy: IfNotPresent
+        args:
+        - 'mount | grep "/sys/fs/bpf type bpf" || mount -t bpf bpf /sys/fs/bpf'
+        command:
+        - /bin/bash
+        - -c
+        - --
+        terminationMessagePolicy: FallbackToLogsOnError
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: bpf-maps
+          mountPath: /sys/fs/bpf
+          mountPropagation: Bidirectional
+      - name: clean-cilium-state
+        image: "quay.io/isovalent/cilium:v1.15.6-cee.1"
+        imagePullPolicy: IfNotPresent
+        command:
+        - /init-container.sh
+        env:
+        - name: CILIUM_ALL_STATE
+          valueFrom:
+            configMapKeyRef:
+              name: cilium-config
+              key: clean-cilium-state
+              optional: true
+        - name: CILIUM_BPF_STATE
+          valueFrom:
+            configMapKeyRef:
+              name: cilium-config
+              key: clean-cilium-bpf-state
+              optional: true
+        - name: WRITE_CNI_CONF_WHEN_READY
+          valueFrom:
+            configMapKeyRef:
+              name: cilium-config
+              key: write-cni-conf-when-ready
+              optional: true
+        - name: KUBERNETES_SERVICE_HOST
+          value: "decoste-pa-decoste-panda-8dbd25-m9adm3lq.hcp.eastus.azmk8s.io"
+        - name: KUBERNETES_SERVICE_PORT
+          value: "443"
+        terminationMessagePolicy: FallbackToLogsOnError
+        securityContext:
+          seLinuxOptions:
+            level: s0
+            type: spc_t
+          capabilities:
+            add:
+              - NET_ADMIN
+              - SYS_MODULE
+              - SYS_ADMIN
+              - SYS_RESOURCE
+            drop:
+              - ALL
+        volumeMounts:
+        - name: bpf-maps
+          mountPath: /sys/fs/bpf
+          # Required to mount cgroup filesystem from the host to cilium agent pod
+        - name: cilium-cgroup
+          mountPath: /run/cilium/cgroupv2
+          mountPropagation: HostToContainer
+        - name: cilium-run
+          mountPath: /var/run/cilium # wait-for-kube-proxy
+      # Install the CNI binaries in an InitContainer so we don't have a writable host mount in the agent
+      - name: install-cni-binaries
+        image: "quay.io/isovalent/cilium:v1.15.6-cee.1"
+        imagePullPolicy: IfNotPresent
+        command:
+          - "/install-plugin.sh"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 10Mi
+        securityContext:
+          seLinuxOptions:
+            level: s0
+            type: spc_t
+          capabilities:
+            drop:
+              - ALL
+        terminationMessagePolicy: FallbackToLogsOnError
+        volumeMounts:
+          - name: cni-path
+            mountPath: /host/opt/cni/bin # .Values.cni.install
+      restartPolicy: Always
+      priorityClassName: system-node-critical
+      serviceAccount: "cilium"
+      serviceAccountName: "cilium"
+      automountServiceAccountToken: true
+      terminationGracePeriodSeconds: 1
+      hostNetwork: true
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                k8s-app: cilium
+            topologyKey: kubernetes.io/hostname
+      nodeSelector:
+        kubernetes.io/os: linux
+      tolerations:
+        - operator: Exists
+      volumes:
+        # For sharing configuration between the "config" initContainer and the agent
+      - name: tmp
+        emptyDir: {}
+        # To keep state between restarts / upgrades
+      - name: cilium-run
+        hostPath:
+          path: /var/run/cilium
+          type: DirectoryOrCreate
+        # To keep state between restarts / upgrades for bpf maps
+      - name: bpf-maps
+        hostPath:
+          path: /sys/fs/bpf
+          type: DirectoryOrCreate
+      # To mount cgroup2 filesystem on the host
+      - name: hostproc
+        hostPath:
+          path: /proc
+          type: Directory
+      # To keep state between restarts / upgrades for cgroup2 filesystem
+      - name: cilium-cgroup
+        hostPath:
+          path: /run/cilium/cgroupv2
+          type: DirectoryOrCreate
+      # To install cilium cni plugin in the host
+      - name: cni-path
+        hostPath:
+          path:  /opt/cni/bin
+          type: DirectoryOrCreate
+        # To install cilium cni configuration in the host
+      - name: etc-cni-netd
+        hostPath:
+          path: /etc/cni/net.d
+          type: DirectoryOrCreate
+        # To be able to load kernel modules
+      - name: lib-modules
+        hostPath:
+          path: /lib/modules
+        # To access iptables concurrently with other processes (e.g. kube-proxy)
+      - name: xtables-lock
+        hostPath:
+          path: /run/xtables.lock
+          type: FileOrCreate
+        # To read the clustermesh configuration
+      - name: clustermesh-secrets
+        projected:
+          # note: the leading zero means this number is in octal representation: do not remove it
+          defaultMode: 0400
+          sources:
+          - secret:
+              name: cilium-clustermesh
+              optional: true
+              # note: items are not explicitly listed here, since the entries of this secret
+              # depend on the peers configured, and that would cause a restart of all agents
+              # at every addition/removal. Leaving the field empty makes each secret entry
+              # to be automatically projected into the volume as a file whose name is the key.
+          - secret:
+              name: clustermesh-apiserver-remote-cert
+              optional: true
+              items:
+              - key: tls.key
+                path: common-etcd-client.key
+              - key: tls.crt
+                path: common-etcd-client.crt
+              - key: ca.crt
+                path: common-etcd-client-ca.crt
+      - name: host-proc-sys-net
+        hostPath:
+          path: /proc/sys/net
+          type: Directory
+      - name: host-proc-sys-kernel
+        hostPath:
+          path: /proc/sys/kernel
+          type: Directory
+      - name: hubble-tls
+        projected:
+          # note: the leading zero means this number is in octal representation: do not remove it
+          defaultMode: 0400
+          sources:
+          - secret:
+              name: hubble-server-certs
+              optional: true
+              items:
+              - key: tls.crt
+                path: server.crt
+              - key: tls.key
+                path: server.key
+              - key: ca.crt
+                path: client-ca.crt
+---
+# Source: cilium-enterprise/charts/cilium/templates/cilium-operator/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cilium-operator
+  namespace: cilium
+  labels:
+    io.cilium/app: operator
+    name: cilium-operator
+    app.kubernetes.io/part-of: cilium
+    app.kubernetes.io/name: cilium-operator
+spec:
+  # See docs on ServerCapabilities.LeasesResourceLock in file pkg/k8s/version/version.go
+  # for more details.
+  replicas: 2
+  selector:
+    matchLabels:
+      io.cilium/app: operator
+      name: cilium-operator
+  # ensure operator update on single node k8s clusters, by using rolling update with maxUnavailable=100% in case
+  # of one replica and no user configured Recreate strategy.
+  # otherwise an update might get stuck due to the default maxUnavailable=50% in combination with the
+  # podAntiAffinity which prevents deployments of multiple operator replicas on the same node.
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 50%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: "9963"
+        prometheus.io/scrape: "true"
+      labels:
+        io.cilium/app: operator
+        name: cilium-operator
+        app.kubernetes.io/part-of: cilium
+        app.kubernetes.io/name: cilium-operator
+    spec:
+      containers:
+      - name: cilium-operator
+        image: "quay.io/isovalent/operator-generic:v1.15.6-cee.1"
+        imagePullPolicy: IfNotPresent
+        command:
+        - cilium-operator-generic
+        args:
+        - --config-dir=/tmp/cilium/config-map
+        - --debug=$(CILIUM_DEBUG)
+        env:
+        - name: K8S_NODE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        - name: CILIUM_K8S_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: CILIUM_DEBUG
+          valueFrom:
+            configMapKeyRef:
+              key: debug
+              name: cilium-config
+              optional: true
+        - name: KUBERNETES_SERVICE_HOST
+          value: "decoste-pa-decoste-panda-8dbd25-m9adm3lq.hcp.eastus.azmk8s.io"
+        - name: KUBERNETES_SERVICE_PORT
+          value: "443"
+        ports:
+        - name: prometheus
+          containerPort: 9963
+          hostPort: 9963
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            host: "127.0.0.1"
+            path: /healthz
+            port: 9234
+            scheme: HTTP
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 3
+        readinessProbe:
+          httpGet:
+            host: "127.0.0.1"
+            path: /healthz
+            port: 9234
+            scheme: HTTP
+          initialDelaySeconds: 0
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 5
+        volumeMounts:
+        - name: cilium-config-path
+          mountPath: /tmp/cilium/config-map
+          readOnly: true
+        terminationMessagePolicy: FallbackToLogsOnError
+      hostNetwork: true
+      restartPolicy: Always
+      priorityClassName: system-cluster-critical
+      serviceAccount: "cilium-operator"
+      serviceAccountName: "cilium-operator"
+      automountServiceAccountToken: true
+      # In HA mode, cilium-operator pods must not be scheduled on the same
+      # node as they will clash with each other.
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                io.cilium/app: operator
+            topologyKey: kubernetes.io/hostname
+      nodeSelector:
+        kubernetes.io/os: linux
+      tolerations:
+        - operator: Exists
+      volumes:
+        # To read the configuration from the config map
+      - name: cilium-config-path
+        configMap:
+          name: cilium-config
+---
+# Source: cilium-enterprise/charts/cilium/templates/hubble-relay/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hubble-relay
+  namespace: cilium
+  labels:
+    k8s-app: hubble-relay
+    app.kubernetes.io/name: hubble-relay
+    app.kubernetes.io/part-of: cilium
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: hubble-relay
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+      labels:
+        k8s-app: hubble-relay
+        app.kubernetes.io/name: hubble-relay
+        app.kubernetes.io/part-of: cilium
+    spec:
+      securityContext:
+        fsGroup: 65532
+      containers:
+        - name: hubble-relay
+          securityContext:
+            capabilities:
+              drop:
+              - ALL
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          image: "quay.io/isovalent/hubble-relay:v1.15.6-cee.1"
+          imagePullPolicy: IfNotPresent
+          command:
+            - hubble-relay
+          args:
+            - serve
+            - --debug
+          ports:
+            - name: grpc
+              containerPort: 4245
+          readinessProbe:
+            grpc:
+              port: 4222
+            timeoutSeconds: 3
+          livenessProbe:
+            grpc:
+              port: 4222
+            timeoutSeconds: 3
+          startupProbe:
+            # give the relay one minute to start up
+            grpc:
+              port: 4222
+            timeoutSeconds: 3
+            failureThreshold: 20
+            periodSeconds: 3
+          volumeMounts:
+          - name: config
+            mountPath: /etc/hubble-relay
+            readOnly: true
+          - name: tls
+            mountPath: /var/lib/hubble-relay/tls
+            readOnly: true
+          terminationMessagePolicy: FallbackToLogsOnError
+      restartPolicy: Always
+      priorityClassName: 
+      serviceAccount: "hubble-relay"
+      serviceAccountName: "hubble-relay"
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 1
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                k8s-app: cilium
+            topologyKey: kubernetes.io/hostname
+      nodeSelector:
+        kubernetes.io/os: linux
+      volumes:
+      - name: config
+        configMap:
+          name: hubble-relay-config
+          items:
+          - key: config.yaml
+            path: config.yaml
+      - name: tls
+        projected:
+          # note: the leading zero means this number is in octal representation: do not remove it
+          defaultMode: 0400
+          sources:
+          - secret:
+              name: hubble-relay-client-certs
+              items:
+                - key: tls.crt
+                  path: client.crt
+                - key: tls.key
+                  path: client.key
+                - key: ca.crt
+                  path: hubble-server-ca.crt
+---
+# Source: cilium-enterprise/charts/hubble-ui/templates/deployment.yaml
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: cilium
+  labels:
+    k8s-app: hubble-ui
+  name: hubble-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: hubble-ui
+  template:
+    metadata:
+      annotations:
+      labels:
+        k8s-app: hubble-ui
+    spec:
+      securityContext:
+        fsGroup: 65532
+      serviceAccount: "hubble-ui"
+      serviceAccountName: "hubble-ui"
+      automountServiceAccountToken: true
+      containers:
+        - name: frontend
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            runAsGroup: 101
+            runAsNonRoot: true
+            runAsUser: 101
+          image: "quay.io/isovalent/hubble-ui-enterprise:v1.0.1"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+              name: http
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 0
+            timeoutSeconds: 1
+          resources:
+            {}
+          volumeMounts:
+            - name: hubble-ui-nginx-conf
+              mountPath: /etc/nginx/templates/default.conf.template
+              subPath: nginx.conf
+          env:
+            - name: VERSION
+              value: "quay.io/isovalent/hubble-ui-enterprise:v1.0.1"
+        - name: backend
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+          image: "quay.io/isovalent/hubble-ui-enterprise-backend:v1.0.1"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: EVENTS_SERVER_PORT
+              value: "8090"
+            - name: HUBBLE_RELAY_ADDR
+              value: "hubble-relay.kube-system.svc.cluster.local:80"
+            - name: GOPS_ENABLED
+              value: "false"
+            - name: ENABLE_TRACING
+              value: "false"
+            - name: LOG_TRACES
+              value: "false"
+            - name: OTLP_ENABLED
+              value: "false"
+          ports:
+            - containerPort: 8090
+              name: grpc
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: grpc
+              scheme: HTTP
+            initialDelaySeconds: 0
+            timeoutSeconds: 1
+          resources:
+            {}
+          volumeMounts:
+      volumes:
+        - configMap:
+            defaultMode: 438
+            name: hubble-ui-nginx
+          name: hubble-ui-nginx-conf

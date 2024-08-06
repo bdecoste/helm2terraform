@@ -1,0 +1,63 @@
+# Cilium chart inputs
+keepDeprecatedProbes: true
+kubeProxyReplacement: disabled
+aksbyocni:
+  enabled: true
+#azure:
+#  enabled: true
+#  subscriptionID: cilium-demo
+#  resourceGroup: decoste-panda
+#  tenantID: SOME_TENANT
+#  clientID: ""
+#  clientSecret: ""
+debug:
+  enabled: true
+cni:
+  customConf: false
+  chainingMode: none
+#etcd:
+#  enabled: true
+#  ssl: true
+#  endpoints:
+#    - example.etcd
+cluster:
+  name: decoste-panda
+#identityAllocationMode: kvstore
+ipam:
+  operator:
+    clusterPoolIPv4PodCIDRList: 192.168.0.0/16
+k8sServiceHost: decoste-pa-decoste-panda-8dbd25-m9adm3lq.hcp.eastus.azmk8s.io 
+k8sServicePort: 443
+hubble:
+  enabled: true
+  listenAddress: ":4244"
+  metrics:
+    enableOpenMetrics: true    
+    enabled:
+      - dns:query;sourceContext=workload-name;destinationContext=workload-name
+      - drop:sourceContext=identity;destinationContext=identity;labelsContext=source_workload,destination_workload
+      - tcp
+      - flow
+      - icmp
+      - port-distribution
+      - http
+      - flows-to-world
+      - policy
+  relay:
+    enabled: true
+    retryTimeout: 15s
+    dialTimeout: 15s
+    prometheus:
+      enabled: true
+  ui:
+    enabled: false
+masquerade: false
+operator:
+  enabled: true
+  prometheus:
+    enabled: true
+prometheus:
+  enabled: true
+# reduce load on kube-apiserver
+enableK8sEndpointSlice: true
+enableCiliumEndpointSlice: true
