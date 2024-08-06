@@ -47,3 +47,13 @@ Inspect the "suggested" / generated files `helm/manifests.yaml` and `helm/manife
 * PR reviewers can inspect upstream suggested manifests vs our manifests
 
 Alternately, you can ignore helm and skip generating suggested manifests. They're just a tool to help guide us in writing our Terraform resources.
+
+## DeCoste Usage Steps
+
+```
+helm -n cilium template isovalent/cilium-enterprise --version 1.15.6 -f helm-cilium.yaml > helm/manifests.yaml
+make clean convert
+vim daemonset.tf #remove empty_dir
+terraform apply
+```
+
